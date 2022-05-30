@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.demetriuzz.template.ClassWithInitBlock;
 
-public class ClassWithInitBlockTest {
+class ClassWithInitBlockTest {
 
     @Test
     void init1() {
