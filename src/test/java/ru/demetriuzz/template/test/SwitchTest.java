@@ -1,21 +1,21 @@
 package ru.demetriuzz.template.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SwitchTest {
 
     @Test
-    void t1() {
+    void switchTest() {
         assertEquals("один", switch1(1));
         assertEquals("два", switch1(2));
         assertEquals("три", switch1(3));
         assertEquals("много", switch1(4));
 
+        // default в начале
         assertEquals("один", switch2(1));
         assertEquals("два", switch2(2));
         assertEquals("три", switch2(3));
@@ -36,7 +36,6 @@ class SwitchTest {
     }
 
     private String switch2(int digit) {
-        // default впереди
         switch (digit) {
             default:
                 return "много";
@@ -50,7 +49,7 @@ class SwitchTest {
     }
 
     @Test
-    void t2() {
+    void returnTest() {
         // сортировка не гарантированна!
         assertEquals(-1, loop(Set.of(), Set.of()));
         assertEquals(0, loop(Set.of(1, 2, 3, 4, 5), Set.of(1, 2, 3, 4, 5)));
@@ -77,6 +76,25 @@ class SwitchTest {
             }
         }
         return 0;
+    }
+
+    @Test
+    void equalTest() {
+        {
+            // A
+            CharSequence sequence = new StringBuilder("привет");
+            String string = "привет";
+
+            assertNotEquals(sequence, string);
+            assertEquals(sequence.toString(), string);
+        }
+        {
+            // Б
+            CharSequence sequence = "привет";
+            String string = "привет";
+
+            assertEquals(sequence, string);
+        }
     }
 
 }
