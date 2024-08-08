@@ -11,26 +11,26 @@ class ClassWithInitBlockTest {
         {
             System.out.println("variant #1");
             ClassWithInitBlock c1 = new ClassWithInitBlock();
-            System.out.println(c1);
-            System.out.println();
+            final var res = c1.toString();
+            System.out.printf("%s\n\n", res);
             Assertions.assertEquals(
-                    "ClassWithInitBlock{currentYear=2021, cityName='Пермь', humanName='Вася'}", c1.toString());
+                    "ClassWithInitBlock{currentYear=2021, cityName='Пермь', humanName='Вася'}", res);
         }
         {
             System.out.println("variant #2");
             ClassWithInitBlock c1 = new ClassWithInitBlock("Орёл", "Петя");
-            System.out.println(c1);
-            System.out.println();
+            final var res = c1.toString();
+            System.out.printf("%s\n\n", res);
             Assertions.assertEquals(
-                    "ClassWithInitBlock{currentYear=2021, cityName='Орёл', humanName='Петя'}", c1.toString());
+                    "ClassWithInitBlock{currentYear=2021, cityName='Орёл', humanName='Петя'}", res);
         }
         {
             System.out.println("variant #3");
             ClassWithInitBlock c1 = new ClassWithInitBlock("Сызрань");
-            System.out.println(c1);
-            System.out.println();
+            final var res = c1.toString();
+            System.out.printf("%s\n\n", res);
             Assertions.assertEquals(
-                    "ClassWithInitBlock{currentYear=2021, cityName='Сызрань', humanName='Вася'}", c1.toString());
+                    "ClassWithInitBlock{currentYear=2021, cityName='Сызрань', humanName='Вася'}", res);
         }
     }
 
