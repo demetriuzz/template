@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.demetriuzz.template'
+version = '0.0.4'
+description = 'template'
+java.sourceCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc).configureEach {
+    options.encoding = 'UTF-8'
+}
