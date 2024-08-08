@@ -1,8 +1,7 @@
-package ru.demetriuzz.template.test;
+package ru.demetriuzz.template;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.demetriuzz.template.ClassWithInitBlock;
 
 class ClassWithInitBlockTest {
 
