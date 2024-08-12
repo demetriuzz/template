@@ -21,7 +21,7 @@ public class ReadyDrinkTest {
         info(drink2);
         Assertions.assertEquals(16.1, drink2.coast().doubleValue());
 
-        // второй напиток, несколько одинаковых вкусняшек
+        // третий напиток, несколько одинаковых вкусняшек
         ReadyDrink drink3 = new ReadyDrinkN3();
         drink3 = new DrinkDecoratorN1(drink3);
         drink3 = new DrinkDecoratorN1(drink3);
