@@ -4,7 +4,7 @@ plugins {
 
 group = 'ru.demetriuzz.template'
 version = '0.0.4'
-description = 'template'
+description = 'template variant'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -17,7 +17,8 @@ repositories {
 dependencies {
     implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -26,4 +27,8 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.withType(Javadoc).configureEach {
     options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
 }
