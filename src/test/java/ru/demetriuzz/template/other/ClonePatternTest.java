@@ -2,7 +2,7 @@ package ru.demetriuzz.template.other;
 
 import org.junit.jupiter.api.Test;
 
-public class ClonePatternExample {
+public class ClonePatternTest {
 
     private static class MObject implements Cloneable {
 
