@@ -3,8 +3,6 @@ package ru.demetriuzz.template.other;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Objects;
-
 /**
  * Методы <code>equals()</code> и <code>hashCode()</code> тесно связаны друг с другом.</br>
  * Переопределение этой пары методов должно быть <b>согласованно</b>.</br>
@@ -31,39 +29,62 @@ public class ObjectEqualityTest {
 
     @Test
     void t1() {
-        final var p1 = new Point(1, 1);
-        final var p2 = new Point(1, 1);
+        final var p1 = new Point1(1, 1);
+        final var p2 = new Point1(1, 1);
+        final var p3 = new Point1(1, 1);
+
+        Assertions.assertEquals(p1, p1);
+        Assertions.assertEquals(p2, p2);
+        Assertions.assertEquals(p3, p3);
+
         Assertions.assertEquals(p1, p2);
+        Assertions.assertEquals(p2, p1);
+        Assertions.assertEquals(p1.hashCode(), p2.hashCode());
+
+        Assertions.assertEquals(p2, p3);
+        Assertions.assertEquals(p3, p2);
+        Assertions.assertEquals(p2.hashCode(), p3.hashCode());
+
+        Assertions.assertEquals(p1, p3);
+        Assertions.assertEquals(p3, p1);
+        Assertions.assertEquals(p1.hashCode(), p3.hashCode());
     }
 
-    public static class Point { // Record
-        private final int x;
-        private final int y;
+    public record Point1(int x, int y) {
+    }
 
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
+    @Test
+    void t2() {
+        final var p1 = new PointOnlyX(1, 1);
+        final var p2 = new PointOnlyX(1, 2);
+        final var p3 = new PointOnlyX(1, 3);
 
-        public int getX() {
-            return x;
-        }
+        Assertions.assertEquals(p1, p1);
+        Assertions.assertEquals(p2, p2);
+        Assertions.assertEquals(p3, p3);
 
-        public int getY() {
-            return y;
-        }
+        Assertions.assertEquals(p1, p2);
+        Assertions.assertEquals(p2, p1);
+        Assertions.assertNotEquals(p1.hashCode(), p2.hashCode());
 
+        Assertions.assertEquals(p2, p3);
+        Assertions.assertEquals(p3, p2);
+        Assertions.assertNotEquals(p2.hashCode(), p3.hashCode());
+
+        Assertions.assertEquals(p1, p3);
+        Assertions.assertEquals(p3, p1);
+        Assertions.assertNotEquals(p1.hashCode(), p3.hashCode());
+    }
+
+    public record PointOnlyX(int x, int y) {
         @Override
         public boolean equals(Object o) {
+            if (o == null) return false;
             if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Point point = (Point) o;
-            return x == point.x && y == point.y;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(x, y);
+            if (o.getClass() != this.getClass()) return false;
+            final var o1 = (PointOnlyX) o;
+            return this.x == o1.x;
+            // поля `y` нет!
         }
     }
 
