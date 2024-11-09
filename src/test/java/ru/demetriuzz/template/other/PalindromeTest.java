@@ -3,7 +3,7 @@ package ru.demetriuzz.template.other;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class PalindromeString {
+public class PalindromeTest {
 
     @Test
     void doIt() {
